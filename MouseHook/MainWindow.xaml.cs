@@ -131,11 +131,14 @@ namespace MouseHook
 		private void Save_OnClick(object sender, RoutedEventArgs e)
 		{
 			_userActivityHook.Stop();
+		
 			var saveDlg = new SaveFileDialog {Filter = "*.log|*.log"};
 			if (saveDlg.ShowDialog(this) == true)
 			{
 				File.WriteAllText(saveDlg.FileName, LogText.Text);
 			}
+
+			_userActivityHook.Start(true, false);
 
 
 		}
